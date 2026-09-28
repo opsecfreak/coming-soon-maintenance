@@ -1,0 +1,6 @@
+/* Admin styles for MTSUAV Maintenance Mode settings page. */
+.mtsuav-mm-media-preview { margin-bottom: 4px; }
+.mtsuav-mm-media-preview img { border: 1px solid #c3c4c7; border-radius: 4px; }
+.mtsuav-mm-social-row select { margin-right: 6px; }
+.mtsuav-mm-range { vertical-align: middle; }
+.mtsuav-mm-tip { margin: 12px 0; }

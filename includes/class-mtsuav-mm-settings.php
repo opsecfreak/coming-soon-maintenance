@@ -318,7 +318,7 @@ class MTSUAV_MM_Settings {
 	public static function field_bypass_key() {
 		$s   = mtsuav_mm_get_settings();
 		$url = add_query_arg( 'mtsuav_mm_bypass', $s['bypass_key'], home_url( '/' ) );
-		echo '<input type="text" readonly="readonly" value="' . esc_attr( $url ) . '" class="large-text code" onclick="this.select();" />';
+		echo '<input type="text" readonly="readonly" value="' . esc_attr( $url ) . '" class="large-text code mtsuav-mm-select-all" />';
 		$regen = wp_nonce_url(
 			admin_url( 'admin-post.php?action=mtsuav_mm_regenerate_key' ),
 			'mtsuav_mm_regenerate_key'
@@ -618,7 +618,7 @@ class MTSUAV_MM_Settings {
 		<?php if ( $count > 0 ) : ?>
 			<p>
 				<a class="button" href="<?php echo esc_url( MTSUAV_MM_Notify::export_url() ); ?>"><?php esc_html_e( 'Export CSV', 'mtsuav-maintenance-mode' ); ?></a>
-				<a class="button button-link-delete" href="<?php echo esc_url( MTSUAV_MM_Notify::delete_url() ); ?>" onclick="return confirm('<?php echo esc_js( __( 'Delete all subscribers? This cannot be undone.', 'mtsuav-maintenance-mode' ) ); ?>');"><?php esc_html_e( 'Delete all', 'mtsuav-maintenance-mode' ); ?></a>
+				<a class="button button-link-delete mtsuav-mm-delete-all" href="<?php echo esc_url( MTSUAV_MM_Notify::delete_url() ); ?>" data-confirm="<?php echo esc_attr__( 'Delete all subscribers? This cannot be undone.', 'mtsuav-maintenance-mode' ); ?>"><?php esc_html_e( 'Delete all', 'mtsuav-maintenance-mode' ); ?></a>
 			</p>
 			<table class="widefat striped">
 				<thead>

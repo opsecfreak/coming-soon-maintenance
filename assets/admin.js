@@ -73,5 +73,15 @@
 			e.preventDefault();
 			$(this).closest('.mtsuav-mm-social-row').remove();
 		});
+
+		/* Click-to-select for the readonly bypass URL field. */
+		$('.mtsuav-mm-select-all').on('click', function () {
+			$(this).select();
+		});
+
+		/* Confirm before deleting all notify-me subscribers. */
+		$('.mtsuav-mm-delete-all').on('click', function () {
+			return window.confirm($(this).data('confirm'));
+		});
 	});
 })(jQuery);

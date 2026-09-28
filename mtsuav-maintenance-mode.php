@@ -26,12 +26,8 @@ define( 'MTSUAV_MM_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MTSUAV_MM_URL', plugin_dir_url( __FILE__ ) );
 
 /* Shared GitHub releases updater (drop-in, do not modify). */
-define( 'MTSUAV_UPDATER_SLUG', 'mtsuav-maintenance-mode' );
-define( 'MTSUAV_UPDATER_REPO', 'opsecfreak/mtsuav-maintenance-mode' );
-define( 'MTSUAV_UPDATER_VERSION', MTSUAV_MM_VERSION );
-define( 'MTSUAV_UPDATER_FILE', __FILE__ );
 require_once MTSUAV_MM_DIR . 'includes/class-mtsuav-updater.php';
-MTSUAV_Updater::init();
+MTSUAV_Updater::register( 'mtsuav-maintenance-mode', 'opsecfreak/mtsuav-maintenance-mode', MTSUAV_MM_VERSION, __FILE__ );
 
 /* Shared quiet tip box (drop-in, do not modify). */
 require_once MTSUAV_MM_DIR . 'includes/class-mtsuav-tip-box.php';

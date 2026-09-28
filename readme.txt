@@ -74,6 +74,6 @@ No. The countdown hides itself automatically once the target date and time pass.
 
 This plugin does not collect or transmit any personal data.
 
-The plugin checks for updates by polling the public GitHub releases API (api.github.com) for the repository opsecfreak/mtsuav-maintenance-mode, at most once every 12 hours. The request contains no personal data, no cookies, and no site identifiers beyond a standard WordPress user agent string.
+The plugin checks for updates by polling the public GitHub releases API (api.github.com) for the repository opsecfreak/mtsuav-maintenance-mode, at most once every 12 hours. The request contains no personal data, no cookies, and no site identifiers; it uses a generic updater user-agent string.
 
 "Notify me" email addresses entered by visitors are stored in your own WordPress database and are never sent anywhere by this plugin. Delete them at any time from the settings page, or uninstall the plugin to remove all stored data.

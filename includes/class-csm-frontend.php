@@ -1,17 +1,17 @@
 <?php
 /**
- * Frontend gating for MTSUAV Maintenance Mode.
+ * Frontend gating for Coming Soon & Maintenance Mode.
  *
  * Decides who sees the maintenance page and renders it with HTTP 503.
  *
- * @package MTSUAV_Maintenance_Mode
+ * @package CSM
  */
 
 defined( 'ABSPATH' ) || exit;
 
-class MTSUAV_MM_Frontend {
+class CSM_Frontend {
 
-	const COOKIE_NAME = 'mtsuav_mm_bypass';
+	const COOKIE_NAME = 'csm_bypass';
 	const COOKIE_TTL  = 30 * DAY_IN_SECONDS;
 
 	/**
@@ -39,10 +39,10 @@ class MTSUAV_MM_Frontend {
 	 * @return void
 	 */
 	public static function maybe_render() {
-		$settings = mtsuav_mm_get_settings();
+		$settings = csm_get_settings();
 
 		/* Preview mode: admins only, renders the page without enabling. */
-		if ( isset( $_GET['mtsuav_mm_preview'] ) && current_user_can( 'manage_options' ) ) {
+		if ( isset( $_GET['csm_preview'] ) && current_user_can( 'manage_options' ) ) {
 			self::render_page( true );
 		}
 
@@ -67,9 +67,9 @@ class MTSUAV_MM_Frontend {
 			return;
 		}
 
-		/* Secret bypass URL: ?mtsuav_mm_bypass=KEY sets the cookie. */
-		if ( isset( $_GET['mtsuav_mm_bypass'] ) ) {
-			$given = sanitize_text_field( wp_unslash( $_GET['mtsuav_mm_bypass'] ) );
+		/* Secret bypass URL: ?csm_bypass=KEY sets the cookie. */
+		if ( isset( $_GET['csm_bypass'] ) ) {
+			$given = sanitize_text_field( wp_unslash( $_GET['csm_bypass'] ) );
 			$key   = (string) $settings['bypass_key'];
 			if ( '' !== $key && hash_equals( $key, $given ) ) {
 				setcookie(
@@ -84,7 +84,7 @@ class MTSUAV_MM_Frontend {
 						'samesite' => 'Lax',
 					)
 				);
-				wp_safe_redirect( remove_query_arg( 'mtsuav_mm_bypass' ) );
+				wp_safe_redirect( remove_query_arg( 'csm_bypass' ) );
 				exit;
 			}
 			/* Wrong key: fall through to the maintenance page. */
@@ -117,7 +117,7 @@ class MTSUAV_MM_Frontend {
 	 * @return void
 	 */
 	protected static function render_page( $is_preview ) {
-		$settings = mtsuav_mm_get_settings();
+		$settings = csm_get_settings();
 
 		if ( ! $is_preview ) {
 			status_header( 503 );
@@ -127,7 +127,7 @@ class MTSUAV_MM_Frontend {
 			nocache_headers();
 		}
 
-		$template = MTSUAV_MM_DIR . 'templates/maintenance-page.php';
+		$template = CSM_DIR . 'templates/maintenance-page.php';
 		if ( file_exists( $template ) ) {
 			include $template;
 		}

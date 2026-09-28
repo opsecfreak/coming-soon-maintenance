@@ -1,6 +1,6 @@
-/* Admin styles for MTSUAV Maintenance Mode settings page. */
-.mtsuav-mm-media-preview { margin-bottom: 4px; }
-.mtsuav-mm-media-preview img { border: 1px solid #c3c4c7; border-radius: 4px; }
-.mtsuav-mm-social-row select { margin-right: 6px; }
-.mtsuav-mm-range { vertical-align: middle; }
-.mtsuav-mm-tip { margin: 12px 0; }
+/* Admin styles for Coming Soon & Maintenance Mode settings page. */
+.csm-media-preview { margin-bottom: 4px; }
+.csm-media-preview img { border: 1px solid #c3c4c7; border-radius: 4px; }
+.csm-social-row select { margin-right: 6px; }
+.csm-range { vertical-align: middle; }
+.csm-tip { margin: 12px 0; }

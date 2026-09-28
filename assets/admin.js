@@ -1,5 +1,5 @@
 /**
- * Admin script for MTSUAV Maintenance Mode settings page.
+ * Admin script for Coming Soon & Maintenance Mode settings page.
  *
  * Media library pickers, color picker init, overlay range display,
  * and repeatable social-link rows.
@@ -10,22 +10,22 @@
 	$(function () {
 
 		/* Color picker. */
-		$('.mtsuav-mm-color').wpColorPicker();
+		$('.csm-color').wpColorPicker();
 
 		/* Overlay opacity range display. */
-		$('.mtsuav-mm-range').on('input', function () {
-			$(this).siblings('.mtsuav-mm-range-value').text($(this).val() + '%');
+		$('.csm-range').on('input', function () {
+			$(this).siblings('.csm-range-value').text($(this).val() + '%');
 		});
 
 		/* Media library pickers (logo + background image). */
-		$('.mtsuav-mm-media-field').each(function () {
+		$('.csm-media-field').each(function () {
 			var $field = $(this);
-			var $idInput = $field.find('.mtsuav-mm-media-id');
-			var $preview = $field.find('.mtsuav-mm-media-preview');
-			var $remove = $field.find('.mtsuav-mm-media-remove');
+			var $idInput = $field.find('.csm-media-id');
+			var $preview = $field.find('.csm-media-preview');
+			var $remove = $field.find('.csm-media-remove');
 			var frame;
 
-			$field.find('.mtsuav-mm-media-select').on('click', function (e) {
+			$field.find('.csm-media-select').on('click', function (e) {
 				e.preventDefault();
 				if (frame) {
 					frame.open();
@@ -56,11 +56,11 @@
 		});
 
 		/* Repeatable social link rows. */
-		var $rows = $('#mtsuav-mm-social-rows');
-		var template = $('#mtsuav-mm-social-template').html();
-		var index = $rows.find('.mtsuav-mm-social-row').length;
+		var $rows = $('#csm-social-rows');
+		var template = $('#csm-social-template').html();
+		var index = $rows.find('.csm-social-row').length;
 
-		$('#mtsuav-mm-social-add').on('click', function (e) {
+		$('#csm-social-add').on('click', function (e) {
 			e.preventDefault();
 			if (index >= 10) {
 				return;
@@ -69,18 +69,18 @@
 			index++;
 		});
 
-		$rows.on('click', '.mtsuav-mm-social-remove', function (e) {
+		$rows.on('click', '.csm-social-remove', function (e) {
 			e.preventDefault();
-			$(this).closest('.mtsuav-mm-social-row').remove();
+			$(this).closest('.csm-social-row').remove();
 		});
 
 		/* Click-to-select for the readonly bypass URL field. */
-		$('.mtsuav-mm-select-all').on('click', function () {
+		$('.csm-select-all').on('click', function () {
 			$(this).select();
 		});
 
 		/* Confirm before deleting all notify-me subscribers. */
-		$('.mtsuav-mm-delete-all').on('click', function () {
+		$('.csm-delete-all').on('click', function () {
 			return window.confirm($(this).data('confirm'));
 		});
 	});
